@@ -1,6 +1,4 @@
-<script>
-
-  document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     gsap.registerPlugin(ScrollTrigger);
 
     const heroTl = gsap.timeline({
@@ -136,5 +134,3 @@
       syncInterval: 0.5,
     });
   });
-
-</script>
