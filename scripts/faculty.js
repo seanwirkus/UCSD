@@ -1,6 +1,6 @@
 window.facultyJson = [
     {
-      "name": "Ahrenes, Eric",
+      "name": "Ahrens, Eric",
       "focus1": "Research",
       "focus2": null,
       "role": null,
