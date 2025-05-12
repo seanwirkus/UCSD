@@ -1,3 +1,7 @@
+//Faculty Database
+// This file contains the faculty information for the UCSD Radiology website.
+// It is used to populate the faculty section of the website.
+// The data is stored in a JSON format and includes information such as name, focus, role, modality, degree, email, title, image URL, profile URL, and team.
 window.facultyJson = [
     {
       "name": "Ahrens, Eric",
