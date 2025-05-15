@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const rawFacultyData = window.facultyJson || [];
     const DEFAULT_IMG = "https://cdn.prod.website-files.com/6654eb861fcc442c666a548c/680ae7d8fa435d4844a7d9c0_Profile_avatar_placeholder_large.png";
-    const ITEMS_PER_PAGE = 8;
+    const ITEMS_PER_PAGE = 10;
     let currentPage = 1;
 
     const focusLabels = {}, modalityLabels = {};
@@ -39,15 +39,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const filterPrimary = document.getElementById("filter-primary");
     const filterDivision = document.getElementById("filter-division");
     const resetButton = document.getElementById("reset-filters");
+    const resultsCount = document.createElement("div"); // Create results count element
+    resultsCount.id = "results-count";
+    resultsCount.className = "results-count";
+    resetButton.insertAdjacentElement("afterend", resultsCount); // Place it next to the reset button
 
     const getFocusLabel = id => focusLookup[id] || "—";
     const getModalityLabel = id => modalityLookup[id] || "—";
 
     function renderFacultyCards(arr) {
       container.innerHTML = "";
+
       const totalPages = Math.ceil(arr.length / ITEMS_PER_PAGE);
       const start = (currentPage - 1) * ITEMS_PER_PAGE;
-      const pageData = arr.slice(start, start + ITEMS_PER_PAGE);
+      const end = Math.min(start + ITEMS_PER_PAGE, arr.length); // Ensure we don't exceed the array length
+      const pageData = arr.slice(start, end);
+
+      // Update results count
+      resultsCount.textContent = `Showing ${start + 1}–${end} of ${facultyData.length} results`;
 
       pageData.forEach(m => {
         const card = document.createElement("a"); // Make the entire card a link
