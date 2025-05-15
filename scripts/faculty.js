@@ -73,7 +73,7 @@ window.facultyJson = [
       "degree": "MD",
       "email": "jbykowski@health.ucsd.edu",
       "title": "(HS) Clinical Professor",
-      "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1744855650/Julie_Bykowski_dle5ik.jpg",
+      "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1747345550/Julie_Bykowski_Headshot_Neuro_zbd6kk.jpg",
       "profileUrl": "http://profiles.ucsd.edu/julie.marekbykowski",
       "team": 3,
     },
@@ -231,7 +231,7 @@ window.facultyJson = [
       "degree": "MD",
       "email": "aelmi@health.ucsd.edu",
       "title": "(HS) Associate Clinical Professor",
-      "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1744855647/Azadeh_Elmi_izwizx.jpg",
+      "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1747345540/Azadeh_Elmi_Headshot_Breast_fiprhv.jpg",
       "team": null,
     },
     {
@@ -514,6 +514,7 @@ window.facultyJson = [
       "email": "jliau@health.ucsd.edu",
       "title": "(HS) Associate Clinical Professor",
       "profileUrl": "https://profiles.ucsd.edu/joy.liau",
+      "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1747345543/Joy_Liau_Body_Headshot_wycw5a.jpg",
       "team": null,
     },
     {
@@ -587,6 +588,7 @@ window.facultyJson = [
       "email": "rmarks@health.ucsd.edu",
       "title": "(HS) Clinical Professor",
       "profileUrl": "http://profiles.ucsd.edu/robert.marks",
+      "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1747345550/Robert_Marks_Body_Headshot_m6mq6l.jpg",
       "team": 3,
     },
     {
@@ -623,6 +625,7 @@ window.facultyJson = [
       "email": "qmeisinger@health.ucsd.edu",
       "title": null,
       "profileUrl": "http://profiles.ucsd.edu/quinn.meisinger",
+      "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1747345560/Quinn_Meisinger_IR_IR_Res_Director_Headshot_tuptkk.jpg",
       "team": 4,
     },
     {
@@ -635,6 +638,7 @@ window.facultyJson = [
       "email": "jminocha@health.ucsd.edu",
       "title": "Professor of Clinical",
       "profileUrl": "http://profiles.ucsd.edu/jeet.minocha",
+      "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1747345548/Jeet_Minocha_IR_Chief_Headshot_ukqfdf.jpg",
       "team": 3,
     },
     {
@@ -685,6 +689,7 @@ window.facultyJson = [
       "email": "hojeda@health.ucsd.edu",
       "title": "(HS) Clinical Professor",
       "profileUrl": "http://profiles.ucsd.edu/haydee.ojeda-fournier",
+      "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1747345543/Haydee_Ojeda_Fournier_Breast_SD_HEADSHOTS_FORWEB_afq8cu.jpg",
       "team": 3,
     },
     {
