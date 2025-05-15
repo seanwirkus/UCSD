@@ -535,7 +535,7 @@ window.facultyJson = [
       "focus2": null,
       "role": "Vice Chair of Research",
       "modality": null,
-      "degree": "PhD, MBA",
+      "degree": "PhD MBA",
       "email": "ttliu@health.ucsd.edu",
       "title": "Professor",
       "profileUrl": "http://profiles.ucsd.edu/thomastao-ming.liu",
