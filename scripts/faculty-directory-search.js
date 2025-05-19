@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const focusText = m.focus2 ? `${m.focus1}, ${m.focus2}` : m.focus1;
       return {
         displayName: displayName.replace(/,/g, ""), // Ensure no commas in the name
-        degree: m.degree.replace(/,/g, ""), // Remove commas from the degree(s)
+				degree: m.degree ? m.degree.replace(/,/g, "") : "", // Remove commas, or set as empty string if null
         focus: focusLabels[focusText] || null,
         modality: m.modality ? modalityLabels[m.modality] : null,
         email: m.email.replace(/\.edui$/, ".edu").replace(/@ucsd\.edu$/, "@health.ucsd.edu"),
