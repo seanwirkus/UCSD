@@ -49,7 +49,7 @@ window.facultyJson = [
       "email": "zberman@health.ucsd.edu",
       "title": "(HS) Associate Clinical Professor",
       "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1744855642/Zach_Berman_u4dw2r.jpg",
-      "profileUrl": "http://profiles.ucsd.edu/zachary.berman",
+      "profileUrl": "https://providers.ucsd.edu/details/1033521190/radiology",
       "team": null,
     },
     {
@@ -366,7 +366,7 @@ window.facultyJson = [
       "email": "jhandwerker@health.ucsd.edu",
       "title": "(HS) Clinical Professor",
       "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1744855645/Jason_Handwerker_vulmrs.jpg",
-      "profileUrl": "http://profiles.ucsd.edu/jason.handwerker",
+      "profileUrl": "https://providers.ucsd.edu/details/32533/radiology",
       "team": 2,
     },
     {
