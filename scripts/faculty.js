@@ -534,13 +534,14 @@ window.facultyJson = [
       "name": "Liu, Thomas",
       "focus1": "Research",
       "focus2": null,
-      "role": "Vice Chair of Research",
+      "role": "Vice Chair of Research", // Use this, not viceChairTitle
       "modality": null,
       "degree": "PhD MBA",
       "email": "ttliu@health.ucsd.edu",
       "title": "Professor",
       "profileUrl": "http://profiles.ucsd.edu/thomastao-ming.liu",
-      "team": 2, // Vice Chair
+      "team": TEAM_VICE_CHAIRS,
+      "imageUrl": null // or actual image if available
     },
     {
       "name": "Loehfelm, Thomas",
@@ -1025,6 +1026,7 @@ const administrativeLeadership = [
     "degree": null,
     "email": "sanaya@health.ucsd.edu",
     "title": "Interim Administrative Vice Chair",
+    "imageUrl": null,
     "profileUrl": null,
     "team": TEAM_ADMIN_LEADERSHIP
   },
@@ -1037,6 +1039,7 @@ const administrativeLeadership = [
     "degree": "MHA",
     "email": "jsavoie@health.ucsd.edu",
     "title": "Senior Director, Radiology",
+    "imageUrl": null,
     "profileUrl": null,
     "team": TEAM_ADMIN_LEADERSHIP
   },
@@ -1049,6 +1052,7 @@ const administrativeLeadership = [
     "degree": "MSOL BSN CCRN",
     "email": "wutt@health.ucsd.edu",
     "title": "Interim Director, Radiology Nursing",
+    "imageUrl": null,
     "profileUrl": null,
     "team": TEAM_ADMIN_LEADERSHIP
   },
@@ -1061,6 +1065,7 @@ const administrativeLeadership = [
     "degree": null,
     "email": "L5ramirez@health.ucsd.edu",
     "title": "Director of Radiology, La Jolla",
+    "imageUrl": null,
     "profileUrl": null,
     "team": TEAM_ADMIN_LEADERSHIP
   },
@@ -1073,6 +1078,7 @@ const administrativeLeadership = [
     "degree": "MHA CNMT",
     "email": "cwendorf@health.ucsd.edu",
     "title": "Technical Director, Imaging Services",
+    "imageUrl": null,
     "profileUrl": null,
     "team": TEAM_ADMIN_LEADERSHIP
   },
@@ -1085,6 +1091,7 @@ const administrativeLeadership = [
     "degree": "MBA BS NMTCB (CNMT)(PET) RT (CT)",
     "email": "jvanderpool@health.ucsd.edu",
     "title": "Radiology/Imaging Multi-Modality Manager, Hillcrest Campus",
+    "imageUrl": null,
     "profileUrl": null,
     "team": TEAM_ADMIN_LEADERSHIP
   },
@@ -1097,6 +1104,7 @@ const administrativeLeadership = [
     "degree": null,
     "email": "Ewl002@health.ucsd.edu",
     "title": "Director of Radiology, Hillcrest",
+    "imageUrl": null,
     "profileUrl": null,
     "team": TEAM_ADMIN_LEADERSHIP
   },
@@ -1109,6 +1117,7 @@ const administrativeLeadership = [
     "degree": "ARRT(R)",
     "email": "sgergen@health.ucsd.edu",
     "title": "Director of Radiology/Cardiology, East Campus",
+    "imageUrl": null,
     "profileUrl": null,
     "team": TEAM_ADMIN_LEADERSHIP
   },
@@ -1121,6 +1130,7 @@ const administrativeLeadership = [
     "degree": null,
     "email": "jcruz@health.ucsd.edu",
     "title": "Interim Administrative Director of Clinical Operations",
+    "imageUrl": null,
     "profileUrl": null,
     "team": TEAM_ADMIN_LEADERSHIP
   }
@@ -1136,11 +1146,9 @@ const viceChairs = [
     "modality": "Musculoskeletal Imaging",
     "degree": "MD MBA",
     "email": "cbchung@health.ucsd.edu",
-    "title": "Professor / In Residence",
     "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1744855646/Chung_Christine_tlj4s5.jpg",
     "profileUrl": "http://profiles.ucsd.edu/christine.chung",
-    "team": TEAM_VICE_CHAIRS,
-    "viceChairTitle": "Department Chair"
+    "team": TEAM_VICE_CHAIRS
   },
   {
     "name": "Dorros, Stephen",
@@ -1150,10 +1158,8 @@ const viceChairs = [
     "modality": "Musculoskeletal Imaging",
     "degree": "MD",
     "email": "sdorros@health.ucsd.edu",
-    "title": "(HS) Clinical Professor",
     "profileUrl": "http://profiles.ucsd.edu/stephen.dorros",
-    "team": TEAM_VICE_CHAIRS,
-    "viceChairTitle": "Vice Chair of Business Development"
+    "team": TEAM_VICE_CHAIRS
   },
   {
     "name": "Liu, Thomas",
@@ -1163,10 +1169,8 @@ const viceChairs = [
     "modality": null,
     "degree": "PhD MBA",
     "email": "ttliu@health.ucsd.edu",
-    "title": "Professor",
     "profileUrl": "http://profiles.ucsd.edu/thomastao-ming.liu",
-    "team": TEAM_VICE_CHAIRS,
-    "viceChairTitle": "Vice Chair of Research"
+    "team": TEAM_VICE_CHAIRS
   },
   {
     "name": "Murphy, Paul",
@@ -1179,8 +1183,7 @@ const viceChairs = [
     "title": "(HS) Associate Clinical Professor",
     "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1744855643/Paul_Murphy_a2jpgd.jpg",
     "profileUrl": "http://profiles.ucsd.edu/paul.murphy",
-    "team": TEAM_VICE_CHAIRS,
-    "viceChairTitle": "Vice Chair of Information Technology"
+    "team": TEAM_VICE_CHAIRS
   },
   {
     "name": "Handwerker, Jason",
@@ -1193,8 +1196,7 @@ const viceChairs = [
     "title": "(HS) Clinical Professor",
     "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1744855645/Jason_Handwerker_vulmrs.jpg",
     "profileUrl": "https://providers.ucsd.edu/details/32533/radiology",
-    "team": TEAM_VICE_CHAIRS,
-    "viceChairTitle": "Vice Chair of Quality & Safety"
+    "team": TEAM_VICE_CHAIRS
   },
   {
     "name": "Sinha, Shantanu",
@@ -1206,8 +1208,7 @@ const viceChairs = [
     "email": "ssinha@health.ucsd.edu",
     "title": "Professor",
     "profileUrl": "http://profiles.ucsd.edu/shantanu.sinha",
-    "team": TEAM_VICE_CHAIRS,
-    "viceChairTitle": "Vice Chair of Academic Affairs"
+    "team": TEAM_VICE_CHAIRS
   },
   {
     "name": "Santillan, Cynthia",
@@ -1219,8 +1220,7 @@ const viceChairs = [
     "email": "csantillan@health.ucsd.edu",
     "title": "(HS) Clinical Professor",
     "profileUrl": "https://providers.ucsd.edu/details/1760597632/radiology",
-    "team": TEAM_VICE_CHAIRS,
-    "viceChairTitle": "Vice Chair of Clinical Operations"
+    "team": TEAM_VICE_CHAIRS
   },
   {
     "name": "Farid, Nikdokht",
@@ -1233,8 +1233,7 @@ const viceChairs = [
     "title": "(HS) Clinical Professor",
     "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1744855643/Niky_Farid_rikonv.jpg",
     "profileUrl": "https://providers.ucsd.edu/details/1033283702/radiology",
-    "team": TEAM_VICE_CHAIRS,
-    "viceChairTitle": "Vice Chair of Education"
+    "team": TEAM_VICE_CHAIRS
   }
 ];
 
@@ -1370,9 +1369,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const overlay = document.createElement("div");
         overlay.className = "profile-card-overlay";
         overlay.innerHTML = `
-          <div class="text-size-tiny text-color-secondary">
-            ${m.role}
-          </div>
           <div class="text-size-small text-height-125">
             ${m.displayName.replace(/,/g, "")}${m.degree ? " " + m.degree : ""}
           </div>
@@ -1381,6 +1377,9 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
           <div class="text-size-tiny text-style-light text-height-125">
             ${getModalityLabel(m.modality)}
+          </div>
+          <div class="text-size-tiny text-color-secondary">
+            ${m.role}
           </div>
           <a href="mailto:${m.email}" class="email-link" style="pointer-events: auto;">
             <div class="text-size-tiny">${m.email}</div>
