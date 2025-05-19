@@ -701,7 +701,7 @@ window.facultyJson = [
       "degree": "MD",
       "email": "ruparikh@health.ucsd.edu",
       "title": "(HS) Assistant Clinical Professor",
-      "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1744855643/Rupal_Parikh_drjhas.jpg",
+      "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1747345543/Rupal_Parikh_drjhas.jpg",
       "profileUrl": "http://profiles.ucsd.edu/rupal.parikh",
       "team": null,
     },
@@ -1257,4 +1257,33 @@ const divisionChiefs = [
     "team": TEAM_DIVISION_CHIEFS
   }
 ];
+
+// Assign team numbers for everyone in facultyJson
+window.facultyJson.forEach(faculty => {
+  if (
+    faculty.role &&
+    (
+      faculty.role.toLowerCase().includes("division chief") ||
+      faculty.role.toLowerCase().includes("division chief,")
+    )
+  ) {
+    faculty.team = TEAM_DIVISION_CHIEFS;
+  } else if (
+    faculty.role &&
+    faculty.role.toLowerCase().includes("vice chair")
+  ) {
+    faculty.team = TEAM_VICE_CHAIRS;
+  } else if (
+    faculty.role &&
+    (
+      faculty.role.toLowerCase().includes("director of radiology") ||
+      faculty.role.toLowerCase().includes("administrative vice chair") ||
+      faculty.role.toLowerCase().includes("technical director") ||
+      faculty.role.toLowerCase().includes("manager")
+    )
+  ) {
+    faculty.team = TEAM_ADMIN_LEADERSHIP;
+  }
+  // You can add more rules for team 4 or others as needed
+});
 
