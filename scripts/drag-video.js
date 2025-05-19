@@ -12,13 +12,13 @@ document.addEventListener("DOMContentLoaded", function () {
     video.playsInline = true;
     video.preload = "auto";
 
-    const frameRate = 29.97;
+    const frameRate = 60;
     const frameDuration = 1 / frameRate;
     let lastFrameTime = performance.now();
 
     // Initialize ScrollSmoother
     let smoother = ScrollSmoother.create({
-        smooth: 1.2, // Adjust for desired smoothness
+        smooth: 2, // Adjust for desired smoothness
         effects: true
         // wrapper: "#smooth-wrapper", // Uncomment and set if you use a custom wrapper
         // content: "#smooth-content"  // Uncomment and set if you use a custom content container
