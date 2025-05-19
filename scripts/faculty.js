@@ -1265,3 +1265,59 @@ window.facultyJson = [
   ...divisionChiefs,
   // ...add the rest of your faculty here as needed
 ];
+
+// Place this script after your <div id="leadership" ...> section in your HTML
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Use the already grouped arrays if available, otherwise filter from window.facultyJson
+  const adminLeadership = (typeof administrativeLeadership !== "undefined")
+    ? administrativeLeadership
+    : (window.facultyJson || []).filter(f => f.team === 1);
+  const viceChairs = (typeof viceChairs !== "undefined")
+    ? viceChairs
+    : (window.facultyJson || []).filter(f => f.team === 2);
+  const divisionChiefs = (typeof divisionChiefs !== "undefined")
+    ? divisionChiefs
+    : (window.facultyJson || []).filter(f => f.team === 3);
+
+  const DEFAULT_IMG = "https://cdn.prod.website-files.com/6654eb861fcc442c666a548c/680ae7d8fa435d4844a7d9c0_Profile_avatar_placeholder_large.png";
+
+  function createLeadershipCard(person) {
+    const card = document.createElement("div");
+    card.className = "profile-card faculty";
+    card.innerHTML = `
+      <div>
+        <img src="${person.imageUrl || DEFAULT_IMG}" alt="${person.name}" class="image-card" />
+      </div>
+      <div class="profile-card-overlay">
+        <div class="text-size-small text-height-125">
+          ${person.name.replace(/,/g, "")}${person.degree ? " " + person.degree : ""}
+        </div>
+        <div class="text-size-tiny text-color-secondary">
+          ${person.role || ""}
+        </div>
+        <div class="text-size-tiny text-style-light text-height-125">
+          ${person.modality || ""}
+        </div>
+        <a href="mailto:${person.email}" class="email-link" style="pointer-events: auto;">
+          <div class="text-size-tiny">${person.email}</div>
+        </a>
+        ${person.profileUrl ? `<a href="${person.profileUrl}" target="_blank" rel="noopener noreferrer" class="profile-link">Profile</a>` : ""}
+      </div>
+    `;
+    return card;
+  }
+
+  function renderLeadershipSection(arr, containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = "";
+    arr.forEach(person => {
+      container.appendChild(createLeadershipCard(person));
+    });
+  }
+
+  renderLeadershipSection(adminLeadership, "administrative-leadership");
+  renderLeadershipSection(viceChairs, "vice-chairs");
+  renderLeadershipSection(divisionChiefs, "division-chiefs");
+});

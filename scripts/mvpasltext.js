@@ -68,4 +68,3 @@ class VespaTextAnimation {
 document.addEventListener('DOMContentLoaded', () => {
   new VespaTextAnimation();
 });
-</script>
