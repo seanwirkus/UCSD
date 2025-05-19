@@ -460,13 +460,13 @@ window.facultyJson = [
       "name": "Jaffray, Paul",
       "focus1": "Clinical",
       "focus2": null,
-      "role": "Modality Chief",
+      "role": "Division Chief, Emergency Radiology",
       "modality": "Emergency Radiology",
       "degree": "MD",
       "email": "pjaffray@health.ucsd.edu",
       "title": "(HS) Associate Clinical Professor",
-      "profileUrl": "http://profiles.ucsd.edu/paul.jaffray",
-      "team": 4,
+      "profileUrl": "https://providers.ucsd.edu/details/1336136614/radiology",
+      "team": 3,
     },
     {
       "name": "Jerban, Saeed",
@@ -1008,3 +1008,260 @@ window.facultyJson = [
       "team": null
     },
   ];
+
+// Assign team numbers for grouping
+const TEAM_ADMIN_LEADERSHIP = 1;
+const TEAM_VICE_CHAIRS = 2;
+const TEAM_DIVISION_CHIEFS = 3;
+
+// Administrative Leadership (team: 1)
+const administrativeLeadership = [
+  {
+    "name": "Anaya, Sonia",
+    "focus1": "Administration",
+    "focus2": null,
+    "role": "Interim Administrative Vice Chair",
+    "modality": null,
+    "degree": null,
+    "email": "sanaya@health.ucsd.edu",
+    "title": "Interim Administrative Vice Chair",
+    "profileUrl": null,
+    "team": TEAM_ADMIN_LEADERSHIP
+  },
+  {
+    "name": "Savoie, Joseph",
+    "focus1": "Administration",
+    "focus2": null,
+    "role": "Senior Director, Radiology",
+    "modality": null,
+    "degree": "MHA",
+    "email": "jsavoie@health.ucsd.edu",
+    "title": "Senior Director, Radiology",
+    "profileUrl": null,
+    "team": TEAM_ADMIN_LEADERSHIP
+  },
+  {
+    "name": "Utt, Whitney",
+    "focus1": "Administration",
+    "focus2": null,
+    "role": "Interim Director, Radiology Nursing",
+    "modality": null,
+    "degree": "MSOL BSN CCRN",
+    "email": "wutt@health.ucsd.edu",
+    "title": "Interim Director, Radiology Nursing",
+    "profileUrl": null,
+    "team": TEAM_ADMIN_LEADERSHIP
+  },
+  {
+    "name": "Ramirez, Lorena",
+    "focus1": "Administration",
+    "focus2": null,
+    "role": "Director of Radiology, La Jolla",
+    "modality": null,
+    "degree": null,
+    "email": "L5ramirez@health.ucsd.edu",
+    "title": "Director of Radiology, La Jolla",
+    "profileUrl": null,
+    "team": TEAM_ADMIN_LEADERSHIP
+  },
+  {
+    "name": "Wendorf, Chloee",
+    "focus1": "Administration",
+    "focus2": null,
+    "role": "Technical Director, Imaging Services",
+    "modality": null,
+    "degree": "MHA CNMT",
+    "email": "cwendorf@health.ucsd.edu",
+    "title": "Technical Director, Imaging Services",
+    "profileUrl": null,
+    "team": TEAM_ADMIN_LEADERSHIP
+  },
+  {
+    "name": "Vanderpool, John",
+    "focus1": "Administration",
+    "focus2": null,
+    "role": "Radiology/Imaging Multi-Modality Manager, Hillcrest Campus",
+    "modality": null,
+    "degree": "MBA BS NMTCB (CNMT)(PET) RT (CT)",
+    "email": "jvanderpool@health.ucsd.edu",
+    "title": "Radiology/Imaging Multi-Modality Manager, Hillcrest Campus",
+    "profileUrl": null,
+    "team": TEAM_ADMIN_LEADERSHIP
+  },
+  {
+    "name": "Lee, Edward",
+    "focus1": "Administration",
+    "focus2": null,
+    "role": "Director of Radiology, Hillcrest",
+    "modality": null,
+    "degree": null,
+    "email": "Ewl002@health.ucsd.edu",
+    "title": "Director of Radiology, Hillcrest",
+    "profileUrl": null,
+    "team": TEAM_ADMIN_LEADERSHIP
+  },
+  {
+    "name": "Gergen, Sandra",
+    "focus1": "Administration",
+    "focus2": null,
+    "role": "Director of Radiology/Cardiology, East Campus",
+    "modality": null,
+    "degree": "ARRT(R)",
+    "email": "sgergen@health.ucsd.edu",
+    "title": "Director of Radiology/Cardiology, East Campus",
+    "profileUrl": null,
+    "team": TEAM_ADMIN_LEADERSHIP
+  },
+  {
+    "name": "Cruz, Jeannie",
+    "focus1": "Administration",
+    "focus2": null,
+    "role": "Interim Administrative Director of Clinical Operations",
+    "modality": null,
+    "degree": null,
+    "email": "jcruz@health.ucsd.edu",
+    "title": "Interim Administrative Director of Clinical Operations",
+    "profileUrl": null,
+    "team": TEAM_ADMIN_LEADERSHIP
+  }
+];
+
+// Vice Chairs (team: 2)
+const viceChairs = [
+  {
+    "name": "Chung, Christine",
+    "focus1": "Clinical",
+    "focus2": "Research",
+    "role": "Department Chair",
+    "modality": "Musculoskeletal Imaging",
+    "degree": "MD MBA",
+    "email": "cbchung@health.ucsd.edu",
+    "title": "Professor / In Residence",
+    "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1744855646/Chung_Christine_tlj4s5.jpg",
+    "profileUrl": "http://profiles.ucsd.edu/christine.chung",
+    "team": TEAM_VICE_CHAIRS,
+    "viceChairTitle": "Department Chair"
+  },
+  {
+    "name": "Dorros, Stephen",
+    "focus1": "Clinical",
+    "focus2": null,
+    "role": "Vice Chair of Business Development",
+    "modality": "Musculoskeletal Imaging",
+    "degree": "MD",
+    "email": "sdorros@health.ucsd.edu",
+    "title": "(HS) Clinical Professor",
+    "profileUrl": "http://profiles.ucsd.edu/stephen.dorros",
+    "team": TEAM_VICE_CHAIRS,
+    "viceChairTitle": "Vice Chair of Business Development"
+  },
+  {
+    "name": "Liu, Thomas",
+    "focus1": "Research",
+    "focus2": null,
+    "role": "Vice Chair of Research",
+    "modality": null,
+    "degree": "PhD MBA",
+    "email": "ttliu@health.ucsd.edu",
+    "title": "Professor",
+    "profileUrl": "http://profiles.ucsd.edu/thomastao-ming.liu",
+    "team": TEAM_VICE_CHAIRS,
+    "viceChairTitle": "Vice Chair of Research"
+  },
+  {
+    "name": "Murphy, Paul",
+    "focus1": "Clinical",
+    "focus2": null,
+    "role": "Vice Chair of Information Technology",
+    "modality": "Body Imaging",
+    "degree": "MD PhD",
+    "email": "pmmurphy@health.ucsd.edu",
+    "title": "(HS) Associate Clinical Professor",
+    "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1744855643/Paul_Murphy_a2jpgd.jpg",
+    "profileUrl": "http://profiles.ucsd.edu/paul.murphy",
+    "team": TEAM_VICE_CHAIRS,
+    "viceChairTitle": "Vice Chair of Information Technology"
+  },
+  {
+    "name": "Handwerker, Jason",
+    "focus1": "Clinical",
+    "focus2": null,
+    "role": "Vice Chair of Quality & Safety",
+    "modality": "Neuroimaging",
+    "degree": "MD",
+    "email": "jhandwerker@health.ucsd.edu",
+    "title": "(HS) Clinical Professor",
+    "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1744855645/Jason_Handwerker_vulmrs.jpg",
+    "profileUrl": "https://providers.ucsd.edu/details/32533/radiology",
+    "team": TEAM_VICE_CHAIRS,
+    "viceChairTitle": "Vice Chair of Quality & Safety"
+  },
+  {
+    "name": "Sinha, Shantanu",
+    "focus1": "Research",
+    "focus2": null,
+    "role": "Vice Chair of Academic Affairs",
+    "modality": null,
+    "degree": "PhD",
+    "email": "ssinha@health.ucsd.edu",
+    "title": "Professor",
+    "profileUrl": "http://profiles.ucsd.edu/shantanu.sinha",
+    "team": TEAM_VICE_CHAIRS,
+    "viceChairTitle": "Vice Chair of Academic Affairs"
+  },
+  {
+    "name": "Santillan, Cynthia",
+    "focus1": "Clinical",
+    "focus2": null,
+    "role": "Vice Chair of Clinical Operations",
+    "modality": "Body Imaging",
+    "degree": "MD",
+    "email": "csantillan@health.ucsd.edu",
+    "title": "(HS) Clinical Professor",
+    "profileUrl": "https://providers.ucsd.edu/details/1760597632/radiology",
+    "team": TEAM_VICE_CHAIRS,
+    "viceChairTitle": "Vice Chair of Clinical Operations"
+  },
+  {
+    "name": "Farid, Nikdokht",
+    "focus1": "Clinical",
+    "focus2": null,
+    "role": "Vice Chair of Education",
+    "modality": "Neuroimaging",
+    "degree": "MD",
+    "email": "nfarid@health.ucsd.edu",
+    "title": "(HS) Clinical Professor",
+    "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1744855643/Niky_Farid_rikonv.jpg",
+    "profileUrl": "https://providers.ucsd.edu/details/1033283702/radiology",
+    "team": TEAM_VICE_CHAIRS,
+    "viceChairTitle": "Vice Chair of Education"
+  }
+];
+
+// Division Chiefs (team: 3)
+const divisionChiefs = [
+  // Example: Add all with "Division Chief" in their role, and Paul Jaffray (Emergency Radiology)
+  ...window.facultyJson.filter(f =>
+    f.role && f.role.toLowerCase().includes("division chief")
+  ).map(f => ({ ...f, team: TEAM_DIVISION_CHIEFS })),
+  {
+    "name": "Jaffray, Paul",
+    "focus1": "Clinical",
+    "focus2": null,
+    "role": "Division Chief, Emergency Radiology",
+    "modality": "Emergency Radiology",
+    "degree": "MD",
+    "email": "pjaffray@health.ucsd.edu",
+    "title": "(HS) Associate Clinical Professor",
+    "profileUrl": "https://providers.ucsd.edu/details/1336136614/radiology",
+    "team": TEAM_DIVISION_CHIEFS
+  }
+];
+
+// Combine all for export or use
+window.facultyJson = [
+  ...administrativeLeadership,
+  ...viceChairs,
+  ...divisionChiefs,
+  // ...add the rest of your faculty here as needed
+];

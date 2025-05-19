@@ -3,6 +3,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 document.addEventListener("DOMContentLoaded", function () {
     const video = document.querySelector(".bt-video video");
     const videoSection = document.querySelector(".bt-video-section");
+    const smoothScrollContainer = document.getElementById("smooth-scroll");
 
     if (!video || !videoSection) {
         console.error("Video or video section not found!");
@@ -18,11 +19,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const frameDuration = 1 / frameRate;
     let lastFrameTime = performance.now();
 
-    // Use default ScrollSmoother (no wrapper/content needed)
-    let smoother = ScrollSmoother.create({
-        smooth: 2,
-        effects: true
-    });
+    // Use #smooth-scroll as wrapper/content if it exists, otherwise default
+    let smoother;
+    if (smoothScrollContainer) {
+        smoother = ScrollSmoother.create({
+            wrapper: "#smooth-scroll",
+            content: "#smooth-scroll > *",
+            smooth: 2,
+            effects: true
+        });
+    } else {
+        smoother = ScrollSmoother.create({
+            smooth: 2,
+            effects: true
+        });
+    }
 
     function initScrollSync() {
         video.play().then(() => {
