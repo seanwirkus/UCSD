@@ -1,3 +1,5 @@
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
 document.addEventListener("DOMContentLoaded", function () {
     const video = document.querySelector(".bt-video video");
     const videoSection = document.querySelector(".bt-video-section");
@@ -16,12 +18,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const frameDuration = 1 / frameRate;
     let lastFrameTime = performance.now();
 
-    // Initialize ScrollSmoother
+    // Use default ScrollSmoother (no wrapper/content needed)
     let smoother = ScrollSmoother.create({
-        smooth: 2, // Adjust for desired smoothness
+        smooth: 2,
         effects: true
-        // wrapper: "#smooth-wrapper", // Uncomment and set if you use a custom wrapper
-        // content: "#smooth-content"  // Uncomment and set if you use a custom content container
     });
 
     function initScrollSync() {
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 start: "top top",
                 end: "bottom top",
                 scrub: true,
-                scroller: smoother && smoother.scrollContainer, // Use ScrollSmoother's container
+                scroller: smoother && smoother.scrollContainer,
                 onUpdate: (self) => {
                     if (!video.duration) return;
 
