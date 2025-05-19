@@ -178,7 +178,7 @@
           "title": "Professor / In Residence",
           "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1744855646/Chung_Christine_tlj4s5.jpg",
           "profileUrl": "http://profiles.ucsd.edu/christine.chung",
-          "team": 2, // Vice Chair
+          "team": 1, // Department Chair
         },
         {
           "name": "Dale, Anders",
