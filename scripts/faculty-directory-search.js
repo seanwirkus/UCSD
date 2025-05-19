@@ -16,21 +16,30 @@ document.addEventListener("DOMContentLoaded", function () {
     const focusLookup = Object.fromEntries(Object.entries(focusLabels).map(([k, v]) => [v, k]));
     const modalityLookup = Object.fromEntries(Object.entries(modalityLabels).map(([k, v]) => [v, k]));
 
+    const TEAM_LABELS = {
+      1: "Administrative Leadership",
+      2: "Vice Chairs",
+      3: "Division Chiefs"
+    };
+
     const facultyData = rawFacultyData.map(m => {
       let displayName = m.name;
       if (m.name.includes(",")) {
         const [last, first] = m.name.split(',').map(s => s.trim());
-        displayName = `${first} ${last}`.replace(/,/g, ""); // Remove any commas
+        displayName = `${first} ${last}`.replace(/,/g, "");
       }
       const focusText = m.focus2 ? `${m.focus1}, ${m.focus2}` : m.focus1;
       return {
-        displayName: displayName.replace(/,/g, ""), // Ensure no commas in the name
-				degree: m.degree ? m.degree.replace(/,/g, "") : "", // Remove commas, or set as empty string if null
+        displayName: displayName.replace(/,/g, ""),
+        degree: m.degree ? m.degree.replace(/,/g, "") : "",
         focus: focusLabels[focusText] || null,
         modality: m.modality ? modalityLabels[m.modality] : null,
         email: m.email.replace(/\.edui$/, ".edu").replace(/@ucsd\.edu$/, "@health.ucsd.edu"),
         imageUrl: m.imageUrl || DEFAULT_IMG,
-        profileUrl: m.profileUrl || '#'
+        profileUrl: m.profileUrl || '#',
+        team: m.team,
+        teamLabel: TEAM_LABELS[m.team] || "",
+        role: m.role || ""
       };
     }).filter(f => f.displayName && f.degree && f.email);
 
@@ -52,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const totalPages = Math.ceil(arr.length / ITEMS_PER_PAGE);
       const start = (currentPage - 1) * ITEMS_PER_PAGE;
-      const end = Math.min(start + ITEMS_PER_PAGE, arr.length); // Ensure we don't exceed the array length
+      const end = Math.min(start + ITEMS_PER_PAGE, arr.length);
       const pageData = arr.slice(start, end);
 
       // Update results count
@@ -72,8 +81,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const overlay = document.createElement("div");
         overlay.className = "profile-card-overlay";
         overlay.innerHTML = `
+          ${m.teamLabel ? `<div class="text-size-tiny text-style-light text-color-accent">${m.teamLabel}</div>` : ""}
           <div class="text-size-small text-height-125">
             ${m.displayName.replace(/,/g, "")}${m.degree ? " " + m.degree : ""}
+          </div>
+          <div class="text-size-tiny text-color-secondary">
+            ${m.role}
           </div>
           <div class="text-size-tiny text-color-secondary">
             ${getFocusLabel(m.focus)}

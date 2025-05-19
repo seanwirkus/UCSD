@@ -174,7 +174,7 @@ window.facultyJson = [
       "title": "Professor / In Residence",
       "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1744855646/Chung_Christine_tlj4s5.jpg",
       "profileUrl": "http://profiles.ucsd.edu/christine.chung",
-      "team": 1,
+      "team": 2, // Vice Chair
     },
     {
       "name": "Dale, Anders",
@@ -198,7 +198,7 @@ window.facultyJson = [
       "email": "sdorros@health.ucsd.edu",
       "title": "(HS) Clinical Professor",
       "profileUrl": "http://profiles.ucsd.edu/stephen.dorros",
-      "team": 2,
+      "team": 2, // Vice Chair
     },
     {
       "name": "Du, Jiang",
@@ -294,7 +294,7 @@ window.facultyJson = [
       "email": "sgamie@health.ucsd.edu",
       "title": "(HS) Clinical Professor",
       "profileUrl": "http://profiles.ucsd.edu/sherief.gamie",
-      "team": 3,
+      "team": 3, // Division Chief
     },
     {
       "name": "Gentili, Amilcare",
@@ -367,7 +367,7 @@ window.facultyJson = [
       "title": "(HS) Clinical Professor",
       "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1744855645/Jason_Handwerker_vulmrs.jpg",
       "profileUrl": "https://providers.ucsd.edu/details/32533/radiology",
-      "team": 2,
+      "team": 2, // Vice Chair
     },
     {
       "name": "Hawley, Daniel",
@@ -391,7 +391,7 @@ window.facultyJson = [
       "email": "jherochung@health.ucsd.edu",
       "title": "Professor of Clinical",
       "profileUrl": "http://profiles.ucsd.edu/jonathan.herochung",
-      "team": 3,
+      "team": 3, // Division Chief
     },
     {
       "name": "Horowitz, Michael",
@@ -430,7 +430,7 @@ window.facultyJson = [
       "title": "(HS) Clinical Professor",
       "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1744855647/Brady_Huang_zbfpre.jpg",
       "profileUrl": "http://profiles.ucsd.edu/brady.huang",
-      "team": 3,
+      "team": 3, // Division Chief
     },
     {
       "name": "Huang, Mingxiong",
@@ -466,7 +466,7 @@ window.facultyJson = [
       "email": "pjaffray@health.ucsd.edu",
       "title": "(HS) Associate Clinical Professor",
       "profileUrl": "https://providers.ucsd.edu/details/1336136614/radiology",
-      "team": 3,
+      "team": 3, // Division Chief
     },
     {
       "name": "Jerban, Saeed",
@@ -540,7 +540,7 @@ window.facultyJson = [
       "email": "ttliu@health.ucsd.edu",
       "title": "Professor",
       "profileUrl": "http://profiles.ucsd.edu/thomastao-ming.liu",
-      "team": 2,
+      "team": 2, // Vice Chair
     },
     {
       "name": "Loehfelm, Thomas",
@@ -576,7 +576,7 @@ window.facultyJson = [
       "email": "jbykowski@health.ucsd.edu",
       "title": "Professor of Clinical",
       "profileUrl": "http://profiles.ucsd.edu/julie.marekbykowski",
-      "team": 3,
+      "team": 3, // Division Chief
     },
     {
       "name": "Marks, Robert",
@@ -589,7 +589,7 @@ window.facultyJson = [
       "title": "(HS) Clinical Professor",
       "profileUrl": "http://profiles.ucsd.edu/robert.marks",
       "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1747345550/Robert_Marks_Body_Headshot_m6mq6l.jpg",
-      "team": 3,
+      "team": 3, // Division Chief
     },
     {
       "name": "Mcnamee, Cairine",
@@ -639,7 +639,7 @@ window.facultyJson = [
       "title": "Professor of Clinical",
       "profileUrl": "http://profiles.ucsd.edu/jeet.minocha",
       "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1747345548/Jeet_Minocha_IR_Chief_Headshot_ukqfdf.jpg",
-      "team": 3,
+      "team": 3, // Division Chief
     },
     {
       "name": "Miyazaki, Mitsue",
@@ -664,7 +664,7 @@ window.facultyJson = [
       "title": "(HS) Associate Clinical Professor",
       "imageUrl": "https://res.cloudinary.com/dn78hfybw/image/upload/c_fill,ar_3:4,g_auto/v1744855643/Paul_Murphy_a2jpgd.jpg",
       "profileUrl": "http://profiles.ucsd.edu/paul.murphy",
-      "team": 2,
+      "team": 2, // Vice Chair
     },
     {
       "name": "Newton, Isabel",
@@ -1258,66 +1258,3 @@ const divisionChiefs = [
   }
 ];
 
-// Combine all for export or use
-window.facultyJson = [
-  ...administrativeLeadership,
-  ...viceChairs,
-  ...divisionChiefs,
-  // ...add the rest of your faculty here as needed
-];
-
-// Place this script after your <div id="leadership" ...> section in your HTML
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Use the already grouped arrays if available, otherwise filter from window.facultyJson
-  const adminLeadership = (typeof administrativeLeadership !== "undefined")
-    ? administrativeLeadership
-    : (window.facultyJson || []).filter(f => f.team === 1);
-  const viceChairs = (typeof viceChairs !== "undefined")
-    ? viceChairs
-    : (window.facultyJson || []).filter(f => f.team === 2);
-  const divisionChiefs = (typeof divisionChiefs !== "undefined")
-    ? divisionChiefs
-    : (window.facultyJson || []).filter(f => f.team === 3);
-
-  const DEFAULT_IMG = "https://cdn.prod.website-files.com/6654eb861fcc442c666a548c/680ae7d8fa435d4844a7d9c0_Profile_avatar_placeholder_large.png";
-
-  function createLeadershipCard(person) {
-    const card = document.createElement("div");
-    card.className = "profile-card faculty";
-    card.innerHTML = `
-      <div>
-        <img src="${person.imageUrl || DEFAULT_IMG}" alt="${person.name}" class="image-card" />
-      </div>
-      <div class="profile-card-overlay">
-        <div class="text-size-small text-height-125">
-          ${person.name.replace(/,/g, "")}${person.degree ? " " + person.degree : ""}
-        </div>
-        <div class="text-size-tiny text-color-secondary">
-          ${person.role || ""}
-        </div>
-        <div class="text-size-tiny text-style-light text-height-125">
-          ${person.modality || ""}
-        </div>
-        <a href="mailto:${person.email}" class="email-link" style="pointer-events: auto;">
-          <div class="text-size-tiny">${person.email}</div>
-        </a>
-        ${person.profileUrl ? `<a href="${person.profileUrl}" target="_blank" rel="noopener noreferrer" class="profile-link">Profile</a>` : ""}
-      </div>
-    `;
-    return card;
-  }
-
-  function renderLeadershipSection(arr, containerId) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    container.innerHTML = "";
-    arr.forEach(person => {
-      container.appendChild(createLeadershipCard(person));
-    });
-  }
-
-  renderLeadershipSection(adminLeadership, "administrative-leadership");
-  renderLeadershipSection(viceChairs, "vice-chairs");
-  renderLeadershipSection(divisionChiefs, "division-chiefs");
-});
