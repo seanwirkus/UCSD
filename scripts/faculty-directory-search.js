@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
         overlay.className = "profile-card-overlay";
         overlay.innerHTML = `
           <div class="text-size-small text-height-125">
-            ${m.displayName}, ${m.degree}
+            ${m.displayName.replace(/,/g, "")}${m.degree ? ", " + m.degree : ""}
           </div>
           <div class="text-size-tiny text-color-secondary">
             ${getFocusLabel(m.focus)}
