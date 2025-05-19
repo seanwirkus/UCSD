@@ -1,3 +1,8 @@
+// Assign team numbers for grouping
+const TEAM_ADMIN_LEADERSHIP = 1;
+const TEAM_VICE_CHAIRS = 2;
+const TEAM_DIVISION_CHIEFS = 3;
+
 //Faculty Database
 // This file contains the faculty information for the UCSD Radiology website.
 // It is used to populate the faculty section of the website.
@@ -1450,3 +1455,51 @@ document.addEventListener("DOMContentLoaded", function () {
 
     renderFacultyCards(facultyData);
   });
+
+// Helper to render a section by team number
+function renderSectionByTeam(teamNumber, sectionId) {
+  const section = document.getElementById(sectionId);
+  if (!section) return;
+  section.innerHTML = ""; // Clear previous content
+
+  const group = facultyData.filter(m => m.team === teamNumber);
+  group.forEach(m => {
+    const card = document.createElement("a");
+    card.className = "profile-card faculty";
+    card.href = m.profileUrl;
+    card.target = "_blank";
+    card.rel = "noopener noreferrer";
+
+    const imgWrapper = document.createElement("div");
+    imgWrapper.innerHTML = `<img src="${m.imageUrl}" alt="${m.displayName}" class="image-card" />`;
+    card.appendChild(imgWrapper);
+
+    const overlay = document.createElement("div");
+    overlay.className = "profile-card-overlay";
+    overlay.innerHTML = `
+      <div class="text-size-small text-height-125">
+        ${m.displayName.replace(/,/g, "")}${m.degree ? " " + m.degree : ""}
+      </div>
+      <div class="text-size-tiny text-color-secondary">
+        ${getFocusLabel(m.focus)}
+      </div>
+      <div class="text-size-tiny text-style-light text-height-125">
+        ${getModalityLabel(m.modality)}
+      </div>
+      <div class="text-size-tiny text-color-secondary">
+        ${m.role}
+      </div>
+      <a href="mailto:${m.email}" class="email-link" style="pointer-events: auto;">
+        <div class="text-size-tiny">${m.email}</div>
+      </a>
+    `;
+    card.appendChild(overlay);
+
+    section.appendChild(card);
+  });
+}
+
+// Render each section by team number and section ID
+renderSectionByTeam(1, "faculty-admin");      // Admin Leadership
+renderSectionByTeam(2, "faculty-vice");       // Vice Chairs
+renderSectionByTeam(3, "faculty-division");   // Division Chiefs
