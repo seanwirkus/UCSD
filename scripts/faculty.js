@@ -196,7 +196,7 @@
         "modality": "Musculoskeletal Imaging",
         "degree": "MD",
         "email": "sdorros@health.ucsd.edu",
-        "team": 2,
+        "team": null,
         "profileUrl": "http://profiles.ucsd.edu/stephen.dorros",
         "imageSrc": null
     },
@@ -1220,7 +1220,7 @@
             }
           });
         }
-        // Create a single card generator function
+        // Only ONE card creation function is needed:
         function createFacultyCard(m) {
           const card = document.createElement("a");
           card.className = "profile-card faculty";
@@ -1249,83 +1249,7 @@
           card.appendChild(overlay);
           return card;
         }
-        function filteredFaculty() {
-          const term = searchInput.value.trim().toLowerCase();
-          const f = Number(filterPrimary.value);
-          const d = Number(filterDivision.value);
-          return facultyData.filter(m => {
-            const textMatch = !term ||
-              m.displayName.toLowerCase().includes(term) ||
-              getFocusLabel(m.focus).toLowerCase().includes(term) ||
-              getModalityLabel(m.modality).toLowerCase().includes(term);
-            const focusMatch = !f || m.focus === f;
-            const modalityMatch = !d || m.modality === d;
-            return textMatch && focusMatch && modalityMatch;
-          });
-        }
-        Object.entries(focusLookup).forEach(([id, label]) =>
-          filterPrimary.insertAdjacentHTML("beforeend", `<option value="${id}">${label}</option>`)
-        );
-        Object.entries(modalityLookup).forEach(([id, label]) =>
-          filterDivision.insertAdjacentHTML("beforeend", `<option value="${id}">${label}</option>`)
-        );
-        [searchInput, filterPrimary, filterDivision].forEach(el =>
-          el.addEventListener("input", () => {
-            currentPage = 1;
-            renderFacultyCards(filteredFaculty());
-          })
-        );
-        resetButton.addEventListener("click", () => {
-          searchInput.value = "";
-          filterPrimary.value = "";
-          filterDivision.value = "";
-          currentPage = 1;
-          renderFacultyCards(facultyData);
-        });
-        renderFacultyCards(facultyData);
-        // Helper to render a section by team number
-        function renderSectionByTeam(teamNumber, sectionId) {
-          const section = document.getElementById(sectionId);
-          if (!section) return;
-          section.innerHTML = ""; // Clear previous content
-          const group = facultyData.filter(m => m.team === teamNumber);
-          group.forEach(m => {
-            const card = document.createElement("a");
-            card.className = "profile-card faculty";
-            card.href = m.profileUrl;
-            card.target = "_blank";
-            card.rel = "noopener noreferrer";
-            const imgWrapper = document.createElement("div");
-            imgWrapper.innerHTML = `<img src="${m.imageUrl}" alt="${m.displayName}" class="image-card" />`;
-            card.appendChild(imgWrapper);
-            const overlay = document.createElement("div");
-            overlay.className = "profile-card-overlay";
-            overlay.innerHTML = `
-      <div class="text-size-small text-height-125">
-        ${m.displayName}${m.degree ? " " + m.degree : ""}
-      </div>
-      <div class="text-size-tiny text-color-secondary">
-        ${getFocusLabel(m.focus)}
-      </div>
-      <div class="text-size-tiny text-color-secondary">
-        ${m.role}
-      </div>
-      <div class="text-size-tiny text-style-light text-height-125">
-        ${getModalityLabel(m.modality)}
-      </div>
-      <a href="mailto:${m.email}" class="email-link" style="pointer-events: auto;">
-        <div class="text-size-tiny">${m.email}</div>
-      </a>
-    `;
-            card.appendChild(overlay);
-            section.appendChild(card);
-          });
-        }
-        // Render each section by team number and section ID
-        renderSectionByTeam(1, "faculty-admin"); // Admin Leadership
-        renderSectionByTeam(2, "faculty-vice"); // Vice Chairs
-        renderSectionByTeam(3, "faculty-division"); // Division Chiefs
-        // Helper to render a section by assignment (focus)
+        // Use this for all section population:
         function renderSectionByAssignment(assignment, sectionId) {
           const section = document.getElementById(sectionId);
           if (!section) return;
@@ -1336,8 +1260,23 @@
             section.appendChild(createFacultyCard(m));
           });
         }
+        // Helper: Render a section by team number
+        function renderSectionByTeam(teamNumber, sectionId) {
+          const section = document.getElementById(sectionId);
+          if (!section) return;
+          section.innerHTML = "";
+          // Find all faculty with this team number
+          const group = facultyData.filter(m => m.team === teamNumber);
+          group.forEach(m => {
+            section.appendChild(createFacultyCard(m));
+          });
+        }
         // Render each section by assignment and section ID
-        renderSectionByAssignment("Administrative Leadership", "faculty-admin");
-        renderSectionByAssignment("Vice Chairs", "faculty-vice");
-        renderSectionByAssignment("Division Chiefs", "faculty-division");
+        renderSectionByAssignment("Administration", "faculty-admin");
+        renderSectionByAssignment("Clinical", "faculty-vice");
+        renderSectionByAssignment("Research", "faculty-division");
+        // Render each section by team number and section ID
+        renderSectionByTeam(1, "faculty-admin");
+        renderSectionByTeam(2, "faculty-vice");
+        renderSectionByTeam(3, "faculty-division");
       });
