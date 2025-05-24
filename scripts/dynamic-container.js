@@ -62,7 +62,7 @@
 
                 const isDesktop = window.innerWidth >= 768;
                 resizeTimeline.to(this.element, {
-                    width: isDesktop ? '75rem' : '90%',
+                    width: '100%',
                     borderRadius: isDesktop ? '1rem' : '0.5rem',
                     duration: 1
                 });
