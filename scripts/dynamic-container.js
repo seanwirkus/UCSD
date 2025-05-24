@@ -17,15 +17,13 @@
 
             init() {
                 this.createScrollTrigger();
-                // Consider adding a debounced resize listener ifvh/vw units might change behavior significantly
-                // window.addEventListener('resize', () => { /* refresh ScrollTrigger or re-init */ });
+                window.addEventListener('resize', gsap.debounce(this.createScrollTrigger.bind(this), 250));
             }
 
             createScrollTrigger() {
                 console.log("Creating scroll trigger for:", this.element);
 
                 ScrollTrigger.getAll().forEach(trigger => {
-                    // More specific check if multiple dynamic containers or triggers exist
                     if (trigger.trigger && (trigger.trigger === this.element || trigger.trigger === this.element.parentElement)) {
                         trigger.kill();
                     }
@@ -33,39 +31,69 @@
                 gsap.killTweensOf(this.element);
 
                 const isDesktop = window.innerWidth >= 768;
+                const viewportWidth = window.innerWidth;
 
-                // Initial state: Full viewport dimensions, but in normal document flow.
-                // GSAP will handle keeping it in view via pinning.
+                const computedStyle = getComputedStyle(this.element);
+                let elementMaxWidth = computedStyle.maxWidth;
+                let targetWidthPx = viewportWidth; // Default to viewportWidth (scale = 1)
+                let scaleIsBasedOnMaxWidth = false;
+
+                // Read the final border radius from CSS
+                const finalBorderRadius = computedStyle.borderRadius;
+                console.log(`Targeting final border-radius from CSS: ${finalBorderRadius}`);
+
+                if (elementMaxWidth && elementMaxWidth !== 'none' && elementMaxWidth !== 'auto') {
+                    if (elementMaxWidth.endsWith('px')) {
+                        targetWidthPx = parseFloat(elementMaxWidth);
+                        scaleIsBasedOnMaxWidth = true;
+                    } else if (elementMaxWidth.endsWith('rem')) {
+                        targetWidthPx = parseFloat(elementMaxWidth) * parseFloat(getComputedStyle(document.documentElement).fontSize);
+                        scaleIsBasedOnMaxWidth = true;
+                    } else {
+                        console.warn(`Max-width ('${elementMaxWidth}') is in an unsupported unit. Element will not scale based on max-width.`);
+                    }
+                } else {
+                    console.warn("Max-width is 'none', 'auto', or not set. Element will not scale based on max-width.");
+                }
+                
+                if (scaleIsBasedOnMaxWidth) {
+                    targetWidthPx = Math.min(targetWidthPx, viewportWidth); // Cap at viewport width
+                }
+
+                const targetScale = targetWidthPx / viewportWidth;
+                if (targetScale === 1 && scaleIsBasedOnMaxWidth && parseFloat(elementMaxWidth) > 0 ){
+                    console.log("Target scale is 1 because max-width is >= viewport width.");
+                } else if (targetScale === 1 && !scaleIsBasedOnMaxWidth){
+                    console.log("Target scale is 1 (no scaling) because max-width was not usable or not set to a specific value.");
+                }
+
                 gsap.set(this.element, {
                     width: '100vw',
-                    height: '100vh', // Or 'auto' if content defines height and has aspect ratio
+                    height: '100vh',
                     scale: 1,
-                    borderRadius: '0px'
-                    // No position:fixed, no top/left/xPercent/yPercent for viewport centering here.
-                    // Centering during pin is often handled by pin-spacer or transformOrigin.
+                    borderRadius: '0px', // Start with no border radius
+                    // transformOrigin: 'center center' // Set initial if needed, but GSAP defaults to this for scale
                 });
 
-                // Animate from full viewport to a smaller, scaled, and rounded card
                 gsap.to(this.element, {
+                    scale: targetScale, 
+                    borderRadius: finalBorderRadius, // Animate to the computed border radius
+                    ease: 'expo.inOut',
+                    // duration: 0.9, // Removed, scrub will control timing
+                    transformOrigin: "center center", 
+
                     scrollTrigger: {
-                        trigger: this.element.parentElement, // The .dynamic-container-section
-                        pin: this.element, // Pin the .dynamic-container itself
-                        start: "top top", 
-                        end: "+=150%", 
-                        scrub: 1.2,
-                        // markers: true, // Uncomment for debugging ScrollTrigger points
-                    },
-                    scale: 0.8, 
-                    borderRadius: isDesktop ? '1.5rem' : '0.75rem',
-                    // Important: If the element is 100vw, it might overflow its parent when not scaled down.
-                    // The pin spacer GSAP creates will try to accommodate this.
-                    // We might need to ensure the .dynamic-container's content also scales nicely.
-                    ease: 'power1.inOut'
+                        trigger: this.element, 
+                        start: "top 80%", 
+                        end: "+=100%", // Animation completes over a scroll distance of 100% viewport height
+                        scrub: 1, // Smoothly links animation to scroll
+                        // toggleActions: "play none none reverse", // Removed, scrub handles this
+                        // markers: true,
+                    }
                 });
             }
         }
 
-        // Initialize all dynamic containers
         const containers = document.querySelectorAll('.dynamic-container');
         if (containers.length > 0) {
             containers.forEach(container => new DynamicContainer(container));
